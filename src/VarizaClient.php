@@ -10,7 +10,7 @@ use The6FallenAngel\Variza\Exception\ValidationException;
 use The6FallenAngel\Variza\Http\TransportFactory;
 use The6FallenAngel\Variza\Http\TransportInterface;
 
-final class Client
+final class VarizaClient
 {
     public const BASE_URL = 'https://variza.ir/api/v1';
 

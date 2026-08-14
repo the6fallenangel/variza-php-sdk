@@ -6,7 +6,7 @@ namespace The6FallenAngel\Variza;
 
 use The6FallenAngel\Variza\Exception\InvalidSignatureException;
 
-final class WebhookVerifier
+final class VarizaWebhookVerifier
 {
     private const SIGNATURE_PREFIX = 'sha256=';
 

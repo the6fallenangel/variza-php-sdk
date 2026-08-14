@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace The6FallenAngel\Variza\Tests;
 
 use PHPUnit\Framework\TestCase;
-use The6FallenAngel\Variza\Client;
+use The6FallenAngel\Variza\VarizaClient;
 use The6FallenAngel\Variza\Exception\ApiException;
 use The6FallenAngel\Variza\Exception\RateLimitException;
 use The6FallenAngel\Variza\Exception\ValidationException;
@@ -13,7 +13,7 @@ use The6FallenAngel\Variza\Http\HttpResponse;
 use The6FallenAngel\Variza\Http\TransportInterface;
 use The6FallenAngel\Variza\PayRequest;
 
-final class ClientTest extends TestCase
+final class VarizaClientTest extends TestCase
 {
     public function test_pay_returns_pay_link_on_201(): void
     {
@@ -27,7 +27,7 @@ final class ClientTest extends TestCase
             'expires_at' => '2026-08-14T12:00:00+03:30',
         ], JSON_THROW_ON_ERROR));
 
-        $client = new Client(token: 'token-1', transport: $transport);
+        $client = new VarizaClient(token: 'token-1', transport: $transport);
         $link = $client->pay(new PayRequest(amount: 50000, returnUrl: 'https://shop.example/return'));
 
         $this->assertSame('abc123', $link->slug);
@@ -45,7 +45,7 @@ final class ClientTest extends TestCase
             'quantity' => 1,
         ], JSON_THROW_ON_ERROR));
 
-        $client = new Client(token: 'token-1', transport: $transport);
+        $client = new VarizaClient(token: 'token-1', transport: $transport);
         $client->pay(new PayRequest(amount: 10000, returnUrl: 'https://shop.example/return', title: 'T'));
 
         $body = json_decode($transport->lastBody, true, 512, JSON_THROW_ON_ERROR);
@@ -60,7 +60,7 @@ final class ClientTest extends TestCase
             'errors' => ['amount' => ['مبلغ الزامی است.']],
         ], JSON_THROW_ON_ERROR));
 
-        $client = new Client(token: 'token-1', transport: $transport);
+        $client = new VarizaClient(token: 'token-1', transport: $transport);
 
         try {
             $client->pay(new PayRequest(amount: 100, returnUrl: 'https://shop.example/return'));
@@ -76,7 +76,7 @@ final class ClientTest extends TestCase
     {
         $transport = new StubTransport(429, json_encode(['message' => 'Too many requests.'], JSON_THROW_ON_ERROR));
 
-        $client = new Client(token: 'token-1', transport: $transport);
+        $client = new VarizaClient(token: 'token-1', transport: $transport);
 
         $this->expectException(RateLimitException::class);
         $this->expectExceptionCode(429);
@@ -88,7 +88,7 @@ final class ClientTest extends TestCase
     {
         $transport = new StubTransport(500, 'Internal Server Error');
 
-        $client = new Client(token: 'token-1', transport: $transport);
+        $client = new VarizaClient(token: 'token-1', transport: $transport);
 
         $this->expectException(ApiException::class);
         $this->expectExceptionCode(500);

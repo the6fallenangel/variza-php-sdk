@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace The6FallenAngel\Variza;
 
-final class PaymentEvent
+final class VarizaPaymentEvent
 {
     public const EVENT_PAYMENT_PAID = 'payment.paid';
 

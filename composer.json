@@ -1,0 +1,36 @@
+{
+    "name": "the6fallenangel/variza-php-sdk",
+    "description": "PHP SDK for the Variza payment gateway — create payment links and verify webhooks.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "variza",
+        "payment",
+        "card-to-card",
+        "payment-link",
+        "webhook",
+        "sdk"
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5 || ^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "The6FallenAngel\\Variza\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "The6FallenAngel\\Variza\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -16,7 +16,7 @@
 ![Tests](https://img.shields.io/github/actions/workflow/status/the6fallenangel/variza-php-sdk/ci.yml?label=CI&style=flat-square&logo=github)
 ![Packagist Version](https://img.shields.io/packagist/v/the6fallenangel/variza-php-sdk?style=flat-square&logo=packagist)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/the6fallenangel/variza-php-sdk?style=flat-square&logo=packagist)
-![License](https://img.shields.io/github/license/the6fallenangel/variza-php-sdk?style=flat-square)
+![License](https://img.shields.io/github/license/the6fallenangel/variza-php-sdk?style=flat-square&dummy=20260814)
 
 </div>
 
